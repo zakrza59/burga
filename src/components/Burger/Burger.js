@@ -3,6 +3,7 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngriedent';
 import classes from './Burger.css';
 
 const Burger = (props) => {
+  const transformedIngredients = Object.keys(props.ingredients)
   return (
     <div className={classes.Burger}>
       <BurgerIngredient type='bread-top'/>
