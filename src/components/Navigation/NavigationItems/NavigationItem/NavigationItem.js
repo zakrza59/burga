@@ -9,4 +9,4 @@ const NavigationItem = (props) => (
       className={props.active ? classes.active : null}>{props.children}</a>
   </li>
 )
-export default NavigationItem
+export default NavigationItem;
