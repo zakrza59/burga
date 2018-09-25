@@ -6,10 +6,14 @@ import ReactAux from '../../../hoc/ReactAux';
 import classes from './SideDrawer.css';
 
 const SideDrawer = (props) => {
+  let attachedClasses = [classes.SideDrawer, classes.Close]
+  if (props.open) {
+    attachedClasses = [classes.SideDrawer, classes.Open]
+  }
   return (
     <ReactAux>
       <Backdrop show={props.open} clicked={props.closed} />
-      <div className={classes.SideDrawer}>
+      <div className={attachedClasses.join(' ')>
         <div className={classes.Logo}>
           <Logo />
         </div>
