@@ -26,9 +26,9 @@ class BurgerBuilder extends Component {
 
   componentDidMount() {
     axios.get('https://burga-ee8d3.firebaseio.com/ingredients')
-    .then(response => {
-      this.setState({ingredients: response.data})
-    })
+      .then(response => {
+        this.setState({ ingredients: response.data })
+      })
   }
 
   updatePurchaseState(ingredients) {
@@ -128,6 +128,23 @@ class BurgerBuilder extends Component {
       orderSummary = <Spinner />
     }
 
+    let burger = <Spinner />
+
+    if (this.state.ingredients) {
+      burger = (
+        <ReactAux>
+          <Burger ingredients={this.state.ingredients} />
+          <BuildControls
+            ingredientAdded={this.addIngredientHandler}
+            ingredientRemoved={this.removeIngredientHandler}
+            disabled={disabledInfo}
+            price={this.state.totalPrice}
+            purchasable={this.state.purchasable}
+            ordered={this.purchaseHandler} />
+        </ReactAux>
+      );
+    }
+
     return (
       <ReactAux>
         <Modal
@@ -135,14 +152,7 @@ class BurgerBuilder extends Component {
           modalClosed={this.purchaseCancelHandler}>
           {orderSummary}
         </Modal>
-        <Burger ingredients={this.state.ingredients} />
-        <BuildControls
-          ingredientAdded={this.addIngredientHandler}
-          ingredientRemoved={this.removeIngredientHandler}
-          disabled={disabledInfo}
-          price={this.state.totalPrice}
-          purchasable={this.state.purchasable}
-          ordered={this.purchaseHandler} />
+        {burger}
       </ReactAux>
     );
   }
