@@ -25,7 +25,7 @@ class BurgerBuilder extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://burga-ee8d3.firebaseio.com/ingredients')
+    axios.get('https://burga-ee8d3.firebaseio.com/ingredients.json')
       .then(response => {
         this.setState({ ingredients: response.data })
       })
@@ -119,11 +119,6 @@ class BurgerBuilder extends Component {
     }
 
     let orderSummary = null;
-
-    if (this.state.loading) {
-      orderSummary = <Spinner />
-    }
-
     let burger = <Spinner />
 
     if (this.state.ingredients) {
@@ -140,10 +135,14 @@ class BurgerBuilder extends Component {
         </ReactAux>
       );
       orderSummary = <OrderSummary
-      ingredients={this.state.ingredients}
-      purchaseCanceled={this.purchaseCancelHandler}
-      purchaseContinued={this.purchaseContinueHandler}
-      price={this.state.totalPrice} />
+        ingredients={this.state.ingredients}
+        purchaseCanceled={this.purchaseCancelHandler}
+        purchaseContinued={this.purchaseContinueHandler}
+        price={this.state.totalPrice} />
+    }
+
+    if (this.state.loading) {
+      orderSummary = <Spinner />
     }
 
     return (
