@@ -118,11 +118,7 @@ class BurgerBuilder extends Component {
       disabledInfo[key] = disabledInfo[key] <= 0
     }
 
-    let orderSummary = <OrderSummary
-      ingredients={this.state.ingredients}
-      purchaseCanceled={this.purchaseCancelHandler}
-      purchaseContinued={this.purchaseContinueHandler}
-      price={this.state.totalPrice} />
+    let orderSummary = null;
 
     if (this.state.loading) {
       orderSummary = <Spinner />
@@ -143,6 +139,11 @@ class BurgerBuilder extends Component {
             ordered={this.purchaseHandler} />
         </ReactAux>
       );
+      orderSummary = <OrderSummary
+      ingredients={this.state.ingredients}
+      purchaseCanceled={this.purchaseCancelHandler}
+      purchaseContinued={this.purchaseContinueHandler}
+      price={this.state.totalPrice} />
     }
 
     return (
