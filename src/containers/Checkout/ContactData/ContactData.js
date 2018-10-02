@@ -14,7 +14,7 @@ class ContactData extends Component {
     },
     loading: false
   }
-  
+
   orderHandler = (event) => {
     event.preventDefault();
     this.setState({ loading: true });
@@ -36,22 +36,22 @@ class ContactData extends Component {
 
     axios.post('/orders.json', order)
       .then(response => {
-        this.setState({ loading: false, purchasing: false })
+        this.setState({ loading: false })
       })
       .catch(error => {
-        this.setState({ loading: false, purchasing: false })
+        this.setState({ loading: false })
       })
   }
 
-  render () {
+  render() {
     return (
       <div className={classes.ContactData}>
         <h4>Entry your Contact Data</h4>
         <form>
-          <input className={classes.Input} type="text" name="name" placeholder="Your Name"/>
-          <input className={classes.Input} type="email" name="email" placeholder="Your Mail"/>
-          <input className={classes.Input} type="text" name="street" placeholder="Your street"/>
-          <input className={classes.Input} type="text" name="postal" placeholder="Postal Code"/>
+          <input className={classes.Input} type="text" name="name" placeholder="Your Name" />
+          <input className={classes.Input} type="email" name="email" placeholder="Your Mail" />
+          <input className={classes.Input} type="text" name="street" placeholder="Your street" />
+          <input className={classes.Input} type="text" name="postal" placeholder="Postal Code" />
           <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
         </form>
       </div>
