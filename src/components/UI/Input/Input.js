@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Input.css';
 
-const input = (props) => {
+const Input = (props) => {
   let inputElement = null;
 
   switch (props.elementType) {
@@ -50,4 +50,4 @@ const input = (props) => {
 
 };
 
-export default input;
+export default Input;
