@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Input.css';
 
-const Input = (props) => {
+const input = (props) => {
   let inputElement = null;
 
   switch (props.elementType) {
@@ -9,13 +9,15 @@ const Input = (props) => {
       inputElement = <input
         className={classes.InputElement}
         {...props.elementConfig}
-        value={props.value} />;
+        value={props.value}
+        onChange={props.changed} />;
       break;
     case ('textarea'):
       inputElement = <textarea
         className={classes.InputElement}
         {...props.elementConfig}
-        value={props.value} />;
+        value={props.value}
+        onChange={props.changed} />;
       break;
     case ('select'):
       inputElement = (
@@ -48,4 +50,4 @@ const Input = (props) => {
 
 };
 
-export default Input;
+export default input;
